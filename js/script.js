@@ -6,6 +6,7 @@ let dx = document.getElementById('dx');
 const randomBtn = document.getElementById('randomBtn');
 const moveBtn = document.getElementById('moveBtn');
 const xchgBtn = document.getElementById('xchgBtn');
+const resetBtn = document.getElementById('resetBtn');
 const axRadioFirst = document.getElementById('axRadioFirst');
 const bxRadioFirst = document.getElementById('bxRadioFirst');
 const cxRadioFirst = document.getElementById('cxRadioFirst');
@@ -18,6 +19,14 @@ const dxRadioSecond = document.getElementById('dxRadioSecond');
 randomBtn.addEventListener('click', randomHex);
 moveBtn.addEventListener('click', moveValue);
 xchgBtn.addEventListener('click', xchgValue);
+resetBtn.addEventListener('click', resetAll);
+
+function resetAll() {
+	ax.value = '0000';
+	bx.value = '0000';
+	cx.value = '0000';
+	dx.value = '0000';
+}
 
 function xchgValue() {
 	if (axRadioFirst.checked && bxRadioSecond.checked) {
