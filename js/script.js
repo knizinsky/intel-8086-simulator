@@ -5,11 +5,32 @@ let dx = document.getElementById('dx');
 
 const randomBtn = document.getElementById('randomBtn');
 const moveBtn = document.getElementById('moveBtn');
+const axRadioFirst = document.getElementById('axRadioFirst');
+const bxRadioFirst = document.getElementById('bxRadioFirst');
+const cxRadioFirst = document.getElementById('cxRadioFirst');
+const dxRadioFirst = document.getElementById('dxRadioFirst');
+const axRadioSecond = document.getElementById('axRadioSecond');
+const bxRadioSecond = document.getElementById('bxRadioSecond');
+const cxRadioSecond = document.getElementById('cxRadioSecond');
+const dxRadioSecond = document.getElementById('dxRadioSecond');
 
 randomBtn.addEventListener('click', randomHex);
 moveBtn.addEventListener('click', moveValue);
 
-function moveValue() {}
+function moveValue() {
+	ax.value;
+	bx.value;
+	cx.value;
+	dx.value;
+
+	if (axRadioFirst.checked && bxRadioSecond.checked) {
+		bx.value = ax.value;
+	} else if (axRadioFirst.checked && cxRadioSecond.checked) {
+		cx.value = ax.value;
+	} else if (axRadioFirst.checked && dxRadioSecond.checked) {
+		dx.value = ax.value;
+	}
+}
 
 function randomHex() {
 	let val1 = Math.floor(Math.random() * 65536)
