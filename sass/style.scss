@@ -48,10 +48,20 @@ body {
 			width: 50%;
 			display: flex;
 			flex-direction: column;
+
+			label {
+				margin: 7px;
+			}
 		}
 
 		.secondHalfSimulator {
 			width: 50%;
+
+			#adressingMode {
+                margin-top: 5px;
+				width: 50%;
+				height: 22px;
+			}
 		}
 
 		.header {
@@ -61,12 +71,12 @@ body {
 
 		.wholeSection1 {
 			background-color: rgba(150, 150, 150, 0.402);
-			width: 100%;
+			width: 95%;
 			display: flex;
 			align-items: center;
 			flex-direction: column;
 			border-radius: 5px;
-			margin: 8px;
+			margin: 4px;
 		}
 
 		.radioSection {
@@ -76,6 +86,12 @@ body {
 		.radioSection3 {
 			display: flex;
 			flex-direction: column;
+			padding: 0 0 20px;
+		}
+
+		.radioSection4 {
+			padding: 0 0 10px;
+			background-color: rgba(150, 150, 150, 0.402);
 		}
 
 		button {
@@ -115,18 +131,10 @@ body {
 			}
 		}
 
-		label {
-			margin: 7px;
-		}
-
 		.first-section {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-
-			// .first-register {
-
-			// }
 		}
 
 		.second-section {
@@ -146,7 +154,7 @@ body {
 				cursor: pointer;
 			}
 
-			padding: 10px;
+			padding: 4px;
 		}
 	}
 }

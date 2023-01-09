@@ -61,9 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 
-                        <div class="third-section">
-                        -->
+
                     </div>
 
                     <section class="wholeSection1">
@@ -91,12 +89,43 @@
                 </div>
 
                 <div class="secondHalfSimulator">
-                    <div class="radioSection3">
-                        <label><input type="radio" name="adressingType" id="axRadioSecond"> Bazowe</label>
-                        <label><input type="radio" name="adressingType" id="bxRadioSecond"> Indeksowe</label>
-                        <label><input type="radio" name="adressingType" id="cxRadioSecond"> Indeksowo-bazowe</label>
+                    <div class="whereAdressing radioSection3">
+                        <p>Sposób zapisu</p>
+                        <label><input type="radio" name="whereAdress" id="axRadioSecond"> Z pamięci do rejestru</label>
+                        <label><input type="radio" name="whereAdress" id="bxRadioSecond"> Z rejestru do pamięci</label>
                     </div>
+
+                    <div class="radioSection3">
+                        <p>Tryb adresowania</p>
+                        <select name="adressingMode" id="adressingMode">
+                            <option disabled selected value> -- Wybierz tryb -- </option>
+                            <option value="base">Bazowe</option>
+                            <option value="index">Indeksowe</option>
+                            <option value="index-base">Indeksowo-bazowe</option>
+                        </select>
+                    </div>
+
+                    <div class="registersAdress radioSection4">
+                        <label><input type="radio" name="registerAdress" id="siAdress"> SI</label>
+                        <label><input type="radio" name="registerAdress" id="diAdress"> DI</label>
+                        <label><input type="radio" name="registerAdress" id="bxAdress"> BX</label>
+                        <label><input type="radio" name="registerAdress" id="bpAdress"> BP</label>
+                    </div>
+
+                    <div class="indexBaseAdressing radioSection4">
+                        <label><input type="radio" name="indexBaseAdress" id="sibx"> SI+BX</label>
+                        <label><input type="radio" name="indexBaseAdress" id="sibp"> SI+BP</label>
+                        <label><input type="radio" name="indexBaseAdress" id="dibx"> DI+BX</label>
+                        <label><input type="radio" name="indexBaseAdress" id="dibp"> DI+BP</label>
+                    </div>
+
+                    <button>MOV</button>
+
+                    <p>Adres: </p>
+
                 </div>
+
+
 
 
             </div>

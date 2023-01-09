@@ -136,3 +136,41 @@ function randomHex() {
 	cx.value = val3;
 	dx.value = val4;
 }
+
+// ---------------------------------------------------
+
+const adressingMode = document.getElementById('adressingMode');
+
+adressingMode.addEventListener('change', function () {
+	if (this.value === 'base') {
+		document.getElementById('siAdress').disabled = true;
+		document.getElementById('diAdress').disabled = true;
+		document.getElementById('bxAdress').disabled = false;
+		document.getElementById('bpAdress').disabled = false;
+
+        document.getElementById('sibx').disabled = true;
+		document.getElementById('sibp').disabled = true;
+		document.getElementById('dibx').disabled = true;
+		document.getElementById('dibp').disabled = true;
+	} else if (this.value === 'index') {
+		document.getElementById('siAdress').disabled = false;
+		document.getElementById('diAdress').disabled = false;
+		document.getElementById('bxAdress').disabled = true;
+		document.getElementById('bpAdress').disabled = true;
+
+        document.getElementById('sibx').disabled = true;
+		document.getElementById('sibp').disabled = true;
+		document.getElementById('dibx').disabled = true;
+		document.getElementById('dibp').disabled = true;
+	} else if (this.value === 'index-base') {
+		document.getElementById('siAdress').disabled = true;
+		document.getElementById('diAdress').disabled = true;
+		document.getElementById('bxAdress').disabled = true;
+		document.getElementById('bpAdress').disabled = true;
+
+        document.getElementById('sibx').disabled = false;
+		document.getElementById('sibp').disabled = false;
+		document.getElementById('dibx').disabled = false;
+		document.getElementById('dibp').disabled = false;
+	}
+});
