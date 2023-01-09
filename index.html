@@ -14,77 +14,92 @@
     <div class="container">
         <div class="bg-image">
             <div class="box-container">
-                <h1>Symulator procesora Intel 8086</h1>
-                <div class="inputs-container">
-                    <div class="first-section">
-                        <div class="first-register">
-                            <label for="ax">AX</label><input type="text" id="ax" value="0000" pattern="[a-fA-F\d]+"
-                                maxlength="4">
-                        </div>
-                        <div class="first-register">
-                            <label for="bx">BX</label><input type="text" id="bx" value="0000" pattern="[a-fA-F\d]+"
-                                maxlength="4">
-                        </div>
-                        <div class="first-register">
-                            <label for="cx">CX</label><input type="text" id="cx" value="0000" pattern="[a-fA-F\d]+"
-                                maxlength="4">
-                        </div>
-                        <div class="first-register">
-                            <label for="dx">DX</label><input type="text" id="dx" value="0000" pattern="[a-fA-F\d]+"
-                                maxlength="4">
-                        </div>
-                    </div>
+                <header class="header">
+                    <h1>Symulator procesora Intel 8086</h1>
+                </header>
 
-                    <div class="second-section">
-                        <div class="second-register">
-                            <label for="bx2">BX</label><input type="text" id="bx2" value="0000" pattern="[a-fA-F\d]+"
-                                maxlength="4">
-                        </div>
-                        <div class="second-register">
-                            <label for="bp">BP</label><input type="text" id="bp" value="0000" pattern="[a-fA-F\d]+"
-                                maxlength="4">
-                        </div>
-                        <div class="second-register">
-                            <label for="di">DI</label><input type="text" id="di" value="0000" pattern="[a-fA-F\d]+"
-                                maxlength="4">
-                        </div>
-                        <div class="second-register">
-                            <label for="si">SI</label><input type="text" id="si" value="0000" pattern="[a-fA-F\d]+"
-                                maxlength="4">
-                            <div class="second-register">
-                                <label for="offs">OFFSET</label><input type="text" id="offs" value="0000"
-                                    pattern="[a-fA-F\d]+" maxlength="4">
+                <div class="halfSimulator">
+                    <div class="inputs-container">
+                        <div class="first-section">
+                            <div class="first-register">
+                                <label for="ax">AX</label><input type="text" id="ax" value="0000" pattern="[a-fA-F\d]+"
+                                    maxlength="4">
+                            </div>
+                            <div class="first-register">
+                                <label for="bx">BX</label><input type="text" id="bx" value="0000" pattern="[a-fA-F\d]+"
+                                    maxlength="4">
+                            </div>
+                            <div class="first-register">
+                                <label for="cx">CX</label><input type="text" id="cx" value="0000" pattern="[a-fA-F\d]+"
+                                    maxlength="4">
+                            </div>
+                            <div class="first-register">
+                                <label for="dx">DX</label><input type="text" id="dx" value="0000" pattern="[a-fA-F\d]+"
+                                    maxlength="4">
                             </div>
                         </div>
+
+                        <div class="second-section">
+                            <div class="second-register">
+                                <input type="text" id="bx2" value="0000" pattern="[a-fA-F\d]+" maxlength="4"><label
+                                    for="bx2">BX</label>
+                            </div>
+                            <div class="second-register">
+                                <input type="text" id="bp" value="0000" pattern="[a-fA-F\d]+" maxlength="4"><label
+                                    for="bp">BP</label>
+                            </div>
+                            <div class="second-register">
+                                <input type="text" id="di" value="0000" pattern="[a-fA-F\d]+" maxlength="4"><label
+                                    for="di">DI</label>
+                            </div>
+                            <div class="second-register">
+                                <input type="text" id="si" value="0000" pattern="[a-fA-F\d]+" maxlength="4"><label
+                                    for="si">SI</label>
+                                <div class="second-register">
+                                    <input type="text" id="offs" value="0000" pattern="[a-fA-F\d]+" maxlength="4"><label
+                                        for="offs">OFFSET</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 
+                        <div class="third-section">
+                        -->
                     </div>
-                    <!-- 
-                    <div class="third-section">
-                    -->
+
+                    <section class="wholeSection1">
+                        <div class="radioSection">
+                            <label><input type="radio" name="register1" id="axRadioFirst"> AX</label>
+                            <label><input type="radio" name="register1" id="bxRadioFirst"> BX</label>
+                            <label><input type="radio" name="register1" id="cxRadioFirst"> CX</label>
+                            <label><input type="radio" name="register1" id="dxRadioFirst"> DX</label>
+                        </div>
+
+                        <div class="radioSection">
+                            <label><input type="radio" name="register2" id="axRadioSecond"> AX</label>
+                            <label><input type="radio" name="register2" id="bxRadioSecond"> BX</label>
+                            <label><input type="radio" name="register2" id="cxRadioSecond"> CX</label>
+                            <label><input type="radio" name="register2" id="dxRadioSecond"> DX</label>
+                        </div>
+
+                        <div class="buttons">
+                            <button id="randomBtn">RANDOM</button>
+                            <button id="moveBtn">MOV</button>
+                            <button id="xchgBtn">XCHG</button>
+                            <button id="resetBtn">RESET</button>
+                        </div>
+                    </section>
                 </div>
 
-                <div class="radioSection1">
-                    <label><input type="radio" name="register1" id="axRadioFirst"> AX</label>
-                    <label><input type="radio" name="register1" id="bxRadioFirst"> BX</label>
-                    <label><input type="radio" name="register1" id="cxRadioFirst"> CX</label>
-                    <label><input type="radio" name="register1" id="dxRadioFirst"> DX</label>
+                <div class="secondHalfSimulator">
+                    <div class="radioSection3">
+                        <label><input type="radio" name="adressingType" id="axRadioSecond"> Bazowe</label>
+                        <label><input type="radio" name="adressingType" id="bxRadioSecond"> Indeksowe</label>
+                        <label><input type="radio" name="adressingType" id="cxRadioSecond"> Indeksowo-bazowe</label>
+                    </div>
                 </div>
 
-                <div class="radioSection2">
-                    <label><input type="radio" name="register2" id="axRadioSecond"> AX</label>
-                    <label><input type="radio" name="register2" id="bxRadioSecond"> BX</label>
-                    <label><input type="radio" name="register2" id="cxRadioSecond"> CX</label>
-                    <label><input type="radio" name="register2" id="dxRadioSecond"> DX</label>
-                </div>
 
-                <div class="buttons">
-                    <button id="randomBtn">RANDOM</button>
-                    <button id="moveBtn">MOVE</button>
-                    <button id="xchgBtn">XCHG</button>
-                    <button id="resetBtn">RESET</button>
-                </div>
             </div>
-
-
         </div>
     </div>
     </div>
