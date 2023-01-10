@@ -223,6 +223,7 @@ const dibp = document.getElementById('dibp');
 const chosenRegister = document.getElementById('choseRegister');
 
 const movAdressing = document.getElementById('movAdressing');
+const xchgAdressing = document.getElementById('xchgAdressing');
 
 // Sposób zapisu
 
@@ -287,9 +288,12 @@ registersSelect.addEventListener('change', () => {
 
 const resultParagraph = document.getElementById('result');
 
-let memory = new Array(128910); // or 65536
+let memory = new Array(128910); // albo 65536
 
-movAdressing.addEventListener('click', () => {
+movAdressing.addEventListener('click', addresingMOV);
+xchgAdressing.addEventListener('click', addressingXCHG);
+
+function addresingMOV() {
 	if (selectedSaveMode == 'fromMemory') {
 		if (selectedRegister == 'siAdress') {
 			if (selectedRegisterSelect == 'regAX') {
@@ -1301,4 +1305,1275 @@ movAdressing.addEventListener('click', () => {
 			}
 		}
 	}
-});
+}
+
+function addressingXCHG() {
+	if (selectedSaveMode == 'fromMemory') {
+		if (selectedRegister == 'siAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedRegister == 'diAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedRegister == 'bxAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedRegister == 'bpAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} // Index Base Registers
+		else if (selectedIndexBaseRegister == 'sibx') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedIndexBaseRegister == 'sibp') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedIndexBaseRegister == 'dibx') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedIndexBaseRegister == 'dibp') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		}
+	} // -------------------------------------------------------------------------------------------------
+	else if (selectedSaveMode == 'fromRegister') {
+		if (selectedRegister == 'siAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedRegister == 'diAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedRegister == 'bxAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedRegister == 'bpAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} // Index Base Registers
+		else if (selectedIndexBaseRegister == 'sibx') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedIndexBaseRegister == 'sibp') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedIndexBaseRegister == 'dibx') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		} else if (selectedIndexBaseRegister == 'dibp') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = ax.value;
+					ax.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = bx.value;
+					bx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = cx.value;
+					cx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+				let sumDecimal = sum.toString(16);
+
+				if (memory[sumDecimal] === undefined) {
+					resultParagraph.innerHTML = `W tym adresie nie przypisano danych.`;
+				} else {
+					resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}.<br>Pomyślnie zamieniono wartości.`;
+					let temp2 = dx.value;
+					dx.value = memory[sumDecimal];
+					memory[sumDecimal] = temp2;
+				}
+			}
+		}
+	}
+}
