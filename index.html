@@ -91,13 +91,13 @@
                 <div class="secondHalfSimulator">
                     <div class="whereAdressing radioSection3">
                         <p>Sposób zapisu</p>
-                        <label><input type="radio" name="whereAdress" id="axRadioSecond"> Z pamięci do rejestru</label>
-                        <label><input type="radio" name="whereAdress" id="bxRadioSecond"> Z rejestru do pamięci</label>
+                        <label><input type="radio" name="whereAdress" id="fromMemory"> Z pamięci do rejestru</label>
+                        <label><input type="radio" name="whereAdress" id="fromRegister"> Z rejestru do pamięci</label>
                     </div>
 
                     <div class="radioSection3">
                         <p>Tryb adresowania</p>
-                        <select name="adressingMode" id="adressingMode">
+                        <select name="adressingMode" id="adressingMode" class="selectInput">
                             <option disabled selected value> -- Wybierz tryb -- </option>
                             <option value="base">Bazowe</option>
                             <option value="index">Indeksowe</option>
@@ -120,7 +120,7 @@
                     </div>
 
                     <div class="radioSection3">
-                        <select name="choseRegister" id="choseRegister">
+                        <select name="choseRegister" id="choseRegister" class="selectInput">
                             <option disabled selected value> -- Wybierz rejestr -- </option>
                             <option value="regAX">AX</option>
                             <option value="regBX">BX</option>
@@ -129,7 +129,7 @@
                         </select>
                     </div>
 
-                    <button>MOV</button>
+                    <button id="movAdressing">MOV</button>
 
                     <p>Adres: </p>
 
