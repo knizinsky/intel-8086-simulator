@@ -41,8 +41,8 @@
 
                         <div class="second-section">
                             <div class="second-register">
-                                <input type="text" id="bx2" value="0000" pattern="[a-fA-F\d]+" maxlength="4"><label
-                                    for="bx2">BX</label>
+                                <input type="text" id="sp" value="0000" pattern="[a-fA-F\d]+" maxlength="4"><label
+                                    for="sp">SP</label>
                             </div>
                             <div class="second-register">
                                 <input type="text" id="bp" value="0000" pattern="[a-fA-F\d]+" maxlength="4"><label
@@ -99,8 +99,8 @@
                         <p>Tryb adresowania</p>
                         <select name="adressingMode" id="adressingMode" class="selectInput">
                             <option disabled selected value> -- Wybierz tryb -- </option>
-                            <option value="base">Bazowe</option>
                             <option value="index">Indeksowe</option>
+                            <option value="base">Bazowe</option>
                             <option value="index-base">Indeksowo-bazowe</option>
                         </select>
                     </div>
@@ -131,7 +131,7 @@
 
                     <button id="movAdressing">MOV</button>
 
-                    <p>Adres: </p>
+                    <p id="result">Adres: </p>
 
                 </div>
 

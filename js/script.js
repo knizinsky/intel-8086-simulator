@@ -3,6 +3,12 @@ let bx = document.getElementById('bx');
 let cx = document.getElementById('cx');
 let dx = document.getElementById('dx');
 
+let sp = document.getElementById('sp');
+let bp = document.getElementById('bp');
+let di = document.getElementById('di');
+let si = document.getElementById('si');
+let offs = document.getElementById('offs');
+
 const randomBtn = document.getElementById('randomBtn');
 const moveBtn = document.getElementById('moveBtn');
 const xchgBtn = document.getElementById('xchgBtn');
@@ -26,6 +32,11 @@ function resetAll() {
 	bx.value = '0000';
 	cx.value = '0000';
 	dx.value = '0000';
+	sp.value = '0000';
+	bp.value = '0000';
+	di.value = '0000';
+	si.value = '0000';
+	offs.value = '0000';
 }
 
 function xchgValue() {
@@ -81,11 +92,6 @@ function xchgValue() {
 }
 
 function moveValue() {
-	// ax.value;
-	// bx.value;
-	// cx.value;
-	// dx.value;
-
 	if (axRadioFirst.checked && bxRadioSecond.checked) {
 		bx.value = ax.value;
 	} else if (axRadioFirst.checked && cxRadioSecond.checked) {
@@ -130,11 +136,31 @@ function randomHex() {
 		.toString(16)
 		.padStart(4, '0')
 		.toUpperCase();
+	let val5 = Math.floor(Math.random() * 65536)
+		.toString(16)
+		.padStart(4, '0')
+		.toUpperCase();
+	let val6 = Math.floor(Math.random() * 65536)
+		.toString(16)
+		.padStart(4, '0')
+		.toUpperCase();
+	let val7 = Math.floor(Math.random() * 65536)
+		.toString(16)
+		.padStart(4, '0')
+		.toUpperCase();
+	let val8 = Math.floor(Math.random() * 65536)
+		.toString(16)
+		.padStart(4, '0')
+		.toUpperCase();
 
 	ax.value = val1;
 	bx.value = val2;
 	cx.value = val3;
 	dx.value = val4;
+	bp.value = val5;
+	di.value = val6;
+	si.value = val7;
+	offs.value = val8;
 }
 
 // --------------------  disabling buttons  ----------------------------
@@ -259,14 +285,535 @@ registersSelect.addEventListener('change', () => {
 
 // Adresowanie
 
+const resultParagraph = document.getElementById('result');
+
+let memory = new Array(65536);
+
 movAdressing.addEventListener('click', () => {
-	alert(selectedSaveMode);
+	// alert(selectedSaveMode);
 	// alert(selectedAdressingMode);
 	// alert(selectedRegister);
 	// alert(selectedIndexBaseRegister);
 	// alert(selectedRegisterSelect);
 
 	if (selectedSaveMode == 'fromMemory') {
-		alert('siema');
+		if (selectedRegister == 'siAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = cx.value;
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = dx.value;
+			}
+		} else if (selectedRegister == 'diAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = bx.value;
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = cx.value;
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = dx.value;
+			}
+		} else if (selectedRegister == 'bxAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = bx.value;
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = cx.value;
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = bx.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = dx.value;
+			}
+		} else if (selectedRegister == 'bpAdress') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = bx.value;
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = cx.value;
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = bp.value;
+				let hex2 = offs.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+
+				let sum = decimal1 + decimal2;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = dx.value;
+			}
+		} // Index Base Registers
+		else if (selectedIndexBaseRegister == 'sibx') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = bx.value;
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = cx.value;
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = dx.value;
+			}
+		} else if (selectedIndexBaseRegister == 'sibp') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = bx.value;
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = cx.value;
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = si.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = dx.value;
+			}
+		} else if (selectedIndexBaseRegister == 'dibx') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = bx.value;
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = cx.value;
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bx.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = dx.value;
+			}
+		} else if (selectedIndexBaseRegister == 'dibp') {
+			if (selectedRegisterSelect == 'regAX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = ax.value;
+			} else if (selectedRegisterSelect == 'regBX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = bx.value;
+			} else if (selectedRegisterSelect == 'regCX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = cx.value;
+			} else if (selectedRegisterSelect == 'regDX') {
+				let hex1 = di.value;
+				let hex2 = offs.value;
+				let hex3 = bp.value;
+
+				let decimal1 = parseInt(hex1, 16);
+				let decimal2 = parseInt(hex2, 16);
+				let decimal3 = parseInt(hex3, 16);
+
+				let sum = decimal1 + decimal2 + decimal3;
+
+				resultParagraph.innerHTML = `Adres komórki pamięci: ${sum}`;
+				let sumDecimal = sum.toString(16);
+				memory[sumDecimal] = dx.value;
+			}
+		}
 	}
+	// else if(selectedSaveMode == 'fromRegister'){
+	//     if (selectedRegister == 'siAdress') {
+	// 		if (selectedRegisterSelect == 'regAX') {
+
+	// 		}else if(selectedRegisterSelect == 'regBX'){
+
+	//         }else if(selectedRegisterSelect == 'regCX'){
+
+	//         }else if(selectedRegisterSelect == 'regDX'){
+
+	//         }
+	// 	} else if (selectedRegister == 'diAdress') {
+	//         if (selectedRegisterSelect == 'regAX') {
+
+	// 		}else if(selectedRegisterSelect == 'regBX'){
+
+	//         }else if(selectedRegisterSelect == 'regCX'){
+
+	//         }else if(selectedRegisterSelect == 'regDX'){
+
+	//         }
+	// 	} else if (selectedRegister == 'bxAdress') {
+	//         if (selectedRegisterSelect == 'regAX') {
+
+	// 		}else if(selectedRegisterSelect == 'regBX'){
+
+	//         }else if(selectedRegisterSelect == 'regCX'){
+
+	//         }else if(selectedRegisterSelect == 'regDX'){
+
+	//         }
+	// 	} else if (selectedRegister == 'bpAdress') {
+	//         if (selectedRegisterSelect == 'regAX') {
+
+	// 		}else if(selectedRegisterSelect == 'regBX'){
+
+	//         }else if(selectedRegisterSelect == 'regCX'){
+
+	//         }else if(selectedRegisterSelect == 'regDX'){
+
+	//         }
+	// 	} // Index Base Registers
+	//     else if (selectedIndexBaseRegister == 'sibx') {
+	//         if (selectedRegisterSelect == 'regAX') {
+
+	// 		}else if(selectedRegisterSelect == 'regBX'){
+
+	//         }else if(selectedRegisterSelect == 'regCX'){
+
+	//         }else if(selectedRegisterSelect == 'regDX'){
+
+	//         }
+	// 	} else if (selectedIndexBaseRegister == 'sibp') {
+	//         if (selectedRegisterSelect == 'regAX') {
+
+	// 		}else if(selectedRegisterSelect == 'regBX'){
+
+	//         }else if(selectedRegisterSelect == 'regCX'){
+
+	//         }else if(selectedRegisterSelect == 'regDX'){
+
+	//         }
+	// 	} else if (selectedIndexBaseRegister == 'dibx') {
+	//         if (selectedRegisterSelect == 'regAX') {
+
+	// 		}else if(selectedRegisterSelect == 'regBX'){
+
+	//         }else if(selectedRegisterSelect == 'regCX'){
+
+	//         }else if(selectedRegisterSelect == 'regDX'){
+
+	//         }
+	// 	} else if (selectedIndexBaseRegister == 'dibp') {
+	//         if (selectedRegisterSelect == 'regAX') {
+
+	// 		}else if(selectedRegisterSelect == 'regBX'){
+
+	//         }else if(selectedRegisterSelect == 'regCX'){
+
+	//         }else if(selectedRegisterSelect == 'regDX'){
+
+	//         }
+	// 	}
+	// }
 });
