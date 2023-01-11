@@ -163,6 +163,51 @@ function randomHex() {
 	offs.value = val8;
 }
 
+// --------------------  PUSH i POP ----------------------------
+
+let stack = [];
+
+const push = document.getElementById('pushBtn');
+const pop = document.getElementById('popBtn');
+
+push.addEventListener('click', () => {
+	if (axRadioFirst.checked) {
+		stack.push(ax);
+		resultParagraph.innerHTML = 'AX wypchnięty na stos.';
+	} else if (bxRadioFirst.checked) {
+		stack.push(bx);
+		resultParagraph.innerHTML = 'BX wypchnięty na stos.';
+	} else if (cxRadioFirst.checked) {
+		stack.push(cx);
+		resultParagraph.innerHTML = 'CX wypchnięty na stos.';
+	} else if (dxRadioFirst.checked) {
+		stack.push(dx);
+		resultParagraph.innerHTML = 'DX wypchnięty na stos.';
+	} else {
+		resultParagraph.innerHTML =
+			'Zaznacz któryś z rejestrów w pierwszym rzędzie!';
+	}
+});
+
+pop.addEventListener('click', () => {
+	if (axRadioFirst.checked) {
+		stack.pop(ax);
+		resultParagraph.innerHTML = 'AX zepchnięty ze stosu.';
+	} else if (bxRadioFirst.checked) {
+		stack.pop(bx);
+		resultParagraph.innerHTML = 'BX zepchnięty ze stosu.';
+	} else if (cxRadioFirst.checked) {
+		stack.pop(cx);
+		resultParagraph.innerHTML = 'CX zepchnięty ze stosu.';
+	} else if (dxRadioFirst.checked) {
+		stack.pop(dx);
+		resultParagraph.innerHTML = 'DX zepchnięty ze stosu.';
+	} else {
+		resultParagraph.innerHTML =
+			'Zaznacz któryś z rejestrów w pierwszym rzędzie!';
+	}
+});
+
 // --------------------  disabling buttons  ----------------------------
 
 const adressingMode = document.getElementById('adressingMode');

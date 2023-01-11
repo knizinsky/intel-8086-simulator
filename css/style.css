@@ -26,8 +26,8 @@ body {
   align-items: center;
 }
 .bg-image .box-container {
-  width: 700px;
-  height: 500px;
+  width: 725px;
+  height: 510px;
   background-color: rgba(255, 255, 255, 0.947);
   z-index: 100;
   border-radius: 10px;
