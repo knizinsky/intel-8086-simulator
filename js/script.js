@@ -166,22 +166,35 @@ function randomHex() {
 // --------------------  PUSH i POP ----------------------------
 
 let stack = [];
+let spValue = 0; //zmienna do przechowywania aktualnej wartości licznika SP
+
+function toHex(n) {
+	return n.toString(16);
+}
 
 const push = document.getElementById('pushBtn');
 const pop = document.getElementById('popBtn');
 
 push.addEventListener('click', () => {
 	if (axRadioFirst.checked) {
-		stack.push(ax);
+		stack.push(ax.value);
+		spValue -= 2;
+		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'AX wypchnięty na stos.';
 	} else if (bxRadioFirst.checked) {
-		stack.push(bx);
+		stack.push(bx.value);
+		spValue -= 2;
+		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'BX wypchnięty na stos.';
 	} else if (cxRadioFirst.checked) {
-		stack.push(cx);
+		stack.push(cx.value);
+		spValue -= 2;
+		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'CX wypchnięty na stos.';
 	} else if (dxRadioFirst.checked) {
-		stack.push(dx);
+		stack.push(dx.value);
+		spValue -= 2;
+		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'DX wypchnięty na stos.';
 	} else {
 		resultParagraph.innerHTML =
@@ -191,16 +204,24 @@ push.addEventListener('click', () => {
 
 pop.addEventListener('click', () => {
 	if (axRadioFirst.checked) {
-		stack.pop(ax);
+		spValue += 2;
+		stack.pop();
+		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'AX zepchnięty ze stosu.';
 	} else if (bxRadioFirst.checked) {
-		stack.pop(bx);
+		spValue += 2;
+		stack.pop();
+		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'BX zepchnięty ze stosu.';
 	} else if (cxRadioFirst.checked) {
-		stack.pop(cx);
+		spValue += 2;
+		stack.pop();
+		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'CX zepchnięty ze stosu.';
 	} else if (dxRadioFirst.checked) {
-		stack.pop(dx);
+		spValue += 2;
+		stack.pop();
+		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'DX zepchnięty ze stosu.';
 	} else {
 		resultParagraph.innerHTML =
