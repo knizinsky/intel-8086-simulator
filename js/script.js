@@ -178,22 +178,22 @@ const pop = document.getElementById('popBtn');
 push.addEventListener('click', () => {
 	if (axRadioFirst.checked) {
 		stack.push(ax.value);
-		spValue++;
+		spValue -= 2;
 		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'AX wypchnięty na stos.';
 	} else if (bxRadioFirst.checked) {
 		stack.push(bx.value);
-		spValue++;
+		spValue -= 2;
 		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'BX wypchnięty na stos.';
 	} else if (cxRadioFirst.checked) {
 		stack.push(cx.value);
-		spValue++;
+		spValue -= 2;
 		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'CX wypchnięty na stos.';
 	} else if (dxRadioFirst.checked) {
 		stack.push(dx.value);
-		spValue++;
+		spValue -= 2;
 		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'DX wypchnięty na stos.';
 	} else {
@@ -204,22 +204,22 @@ push.addEventListener('click', () => {
 
 pop.addEventListener('click', () => {
 	if (axRadioFirst.checked) {
-		spValue--;
+		spValue += 2;
 		stack.pop();
 		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'AX zepchnięty ze stosu.';
 	} else if (bxRadioFirst.checked) {
-		spValue--;
+		spValue += 2;
 		stack.pop();
 		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'BX zepchnięty ze stosu.';
 	} else if (cxRadioFirst.checked) {
-		spValue--;
+		spValue += 2;
 		stack.pop();
 		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'CX zepchnięty ze stosu.';
 	} else if (dxRadioFirst.checked) {
-		spValue--;
+		spValue += 2;
 		stack.pop();
 		document.getElementById('sp').value = toHex(spValue);
 		resultParagraph.innerHTML = 'DX zepchnięty ze stosu.';
