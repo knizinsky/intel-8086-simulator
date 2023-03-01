@@ -16,17 +16,17 @@ Projekt został wykonany przy użyciu następujących technologii: JavaScript, H
 • BP – wskaźnik bazy (Base Pointer)\
 • DI – rejestr indeksowy przeznaczenia (Destination Index)\
 • SI – rejestr indeksowy źródła (Source Index)\
-• OFFSET - określa położenie danego elementu w pamięci.\
+• OFFSET - określa położenie danego elementu w pamięci.
 
 #### W szarej ramce mamy dwa rzędy wyboru rejestrów oraz pod nimi znajdują się następujące przyciski:
-- **RANDOM** – po jego wciśnięciu zostaną wygenerowane wartości w postaci kodu szesnastkowego do znajdujących się powyżej pól. Przykład: \
+- **RANDOM** – po jego wciśnięciu zostaną wygenerowane wartości w postaci kodu szesnastkowego do znajdujących się powyżej pól. Przykład: 
 
 ![image](https://user-images.githubusercontent.com/108873272/221413242-a9410af5-fd26-4ce0-8899-2a31e0b7b871.png)![image](https://user-images.githubusercontent.com/108873272/221413249-8ea14555-84c0-4215-8b78-f42b69bdd530.png)
 
 - **MOV** – po wcześniejszym wybraniu wybranego rejestru (z pól wyboru tuż nad nim) zarówno z rzędu pierwszego jak i drugiego, gdy klikniemy na ten przycisk skutkiem będzie zamiana rejestru z drugiego wybranego rejestru na pierwszy. Przykład:
 
 ![image](https://user-images.githubusercontent.com/108873272/221413262-6a8b45e9-a031-446b-a4fa-980e827294a3.png)
-![image](https://user-images.githubusercontent.com/108873272/221413266-26d8af8a-fa9f-40aa-81c1-4cb77a2e5443.png)\
+![image](https://user-images.githubusercontent.com/108873272/221413266-26d8af8a-fa9f-40aa-81c1-4cb77a2e5443.png)
 
 - **XCHG** – działa podobnie do MOV, natomiast zamiast zastępować, zamienia obydwie wartości miejscami. Przykład:
 
@@ -52,7 +52,7 @@ Projekt został wykonany przy użyciu następujących technologii: JavaScript, H
 ### Po prawej stronie natomiast widzimy obszar, który ma na celu wyliczać adres komórki pamięci do której przesyłane są zawartości rejestrów i na odwrót. 
 Najpierw należy wybrać sposób zapisu.
 
-![image](https://user-images.githubusercontent.com/108873272/221413360-e56d87ab-08ac-4cf4-9b81-b4e72ff95930.png) \
+![image](https://user-images.githubusercontent.com/108873272/221413360-e56d87ab-08ac-4cf4-9b81-b4e72ff95930.png) 
 
 Mamy do wyboru: 
 - Z rejestru do pamięci,
